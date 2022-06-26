@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +15,7 @@ export class CommentsComponent implements OnInit {
   comment: any;
 
   constructor(private _activeRoute: ActivatedRoute, private _apiServices: ApiService, private _FB: FormBuilder,public authService: AuthService
+    ,private location: Location
     ) {
       this._activeRoute.params.subscribe((params: any) => {
         this.getCommentsByPostID(params['id']);
@@ -32,4 +34,7 @@ export class CommentsComponent implements OnInit {
   }
 
 
+  handleBack() {
+    this.location.back();
+  }
 }

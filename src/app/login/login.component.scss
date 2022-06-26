@@ -59,23 +59,6 @@ body {
       }
   }
 
-  .login-btn {
-      padding: 13px 20px 12px;
-      background-color: #000;
-      border-radius: 4px;
-      font-size: 17px;
-      font-weight: bold;
-      line-height: 20px;
-      color: #fff;
-      margin-bottom: 24px;
-
-      &:hover {
-          border: 1px solid #000;
-          background-color: transparent;
-          color: #000;
-      }
-  }
-
   .forgot-password-link {
       font-size: 14px;
       color: #919aa3;
@@ -85,7 +68,6 @@ body {
   &-footer-text {
       font-size: 16px;
       color: #0d2366;
-      margin-bottom: 60px;
 
       @media (max-width: 767px) {
           margin-bottom: 24px;

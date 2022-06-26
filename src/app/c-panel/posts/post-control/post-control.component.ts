@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +16,7 @@ export class PostControlComponent implements OnInit {
   postData: any;
   addForm: any;
   submitted = false;
-  constructor(private _activeRoute: ActivatedRoute, private _apiServices: ApiService, private _FB: FormBuilder, public authService: AuthService
+  constructor(private _activeRoute: ActivatedRoute, private _apiServices: ApiService, private _FB: FormBuilder, public authService: AuthService, private location: Location
 ) {
     this._activeRoute.params.subscribe((params: any) => {
       this.idParam = params['id'];
@@ -68,5 +69,9 @@ export class PostControlComponent implements OnInit {
       this._apiServices.editPostByID(this.idParam, paramJson).subscribe((data: any) => {
       })
     }
+  }
+
+  handleBack() {
+    this.location.back();
   }
 }
