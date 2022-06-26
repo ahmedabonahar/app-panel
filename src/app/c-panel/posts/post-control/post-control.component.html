@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="nav py-3 px-3 mb-5 d-flex justify-content-between">
+        <div>
+          <h1><b>APP PANEL</b></h1>
+        </div>
+        <div>
+          <a class="nav-link" (click)="authService.SignOut()">
+            <i class="fas fa-sign-out-alt"></i>Log out
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h1  *ngIf="isAdded">Add Post</h1>
+      <h1  *ngIf="!isAdded">Edit Post</h1>
+      <div class="form-body mt-4">
+        <form [formGroup]="addForm" (ngSubmit)="isAdded? addPost() : editPost()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Title</label>
+            <input type="text" class="form-control" formControlName="title" value="{{postData?.title}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <span class="text-danger"
+            *ngIf="(addForm.get('title').touched || submitted) && addForm.get('title').errors?.required">
+            Title is required
+        </span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Body</label>
+            <input type="text" class="form-control" formControlName="body" value="{{postData?.body}}" id="exampleInputPassword1">
+            <span class="text-danger"
+            *ngIf="(addForm.get('body').touched || submitted) && addForm.get('body').errors?.required">
+            Title is required
+        </span>
+          </div>
+          <button type="submit" class="btn btn-success" *ngIf="isAdded">Add</button>
+          <button type="submit" class="btn btn-success" *ngIf="!isAdded">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

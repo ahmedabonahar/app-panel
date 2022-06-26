@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="nav py-3 px-3 mb-5 d-flex justify-content-between">
+        <div>
+          <h1><b>APP PANEL</b></h1>
+        </div>
+        <div>
+          <a class="nav-link" (click)="authService.SignOut()">
+            <i class="fas fa-sign-out-alt"></i>Log out
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="d-flex justify-content-between">
+        <div>
+        <h3>All Posts</h3>
+        </div>
+        <div>
+          <a href="#" class="btn btn-primary"[routerLink]="['add-post']">Add Post</a>
+        </div>
+      </div>
+      <div class="card mt-5" *ngFor="let post of posts  | paginate: { itemsPerPage: 5, currentPage: p }" >
+        <h5 class="card-header">{{ post.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ post.body }}</p>
+          <div class="d-flex justify-content-between pt-2">
+            <div>
+              <a [routerLink]="['/comments', post.id]">
+              View all comments
+              </a>
+            </div>
+            <div>
+              <a href="#" class="btn btn-outline-primary" [routerLink]="['/edit-post', post.id]">Edit</a>
+              <a class="btn btn-outline-danger" (click)="deletePostByID(post.id)">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

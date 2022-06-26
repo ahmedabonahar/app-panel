@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="nav py-3 px-3 mb-5 d-flex justify-content-between">
+        <div>
+          <h1><b>APP PANEL</b></h1>
+        </div>
+        <div>
+          <a class="nav-link" (click)="authService.SignOut()">
+            <i class="fas fa-sign-out-alt"></i>Log out
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="d-flex justify-content-between">
+        <div>
+        <h1>Comments</h1>
+        </div>
+        <div>
+          <a class="btn btn-success">Back To Posts</a>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-header">
+          {{ comment?.name}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ comment?.email }}</h5>
+          <p class="card-text">{{ comment?.body }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          Post ID : {{ comment?.postId }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
