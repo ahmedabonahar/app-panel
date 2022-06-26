@@ -22,8 +22,9 @@
                 </div>
                 <input name="login" id="login" class="btn btn-primary login-btn mb-4" type="button" value="Login" (click)="authService.SignIn(email.value, userPassword.value)">
               </form>
-              <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
-              <a href="#!" class="forgot-password-link">Forgot password?</a>
+              <p class="login-card-footer-text">Don't have an account? <a class="text-reset" [routerLink]="'/sing-up'">Sing Up here</a></p>
+              <p class="login-card-footer-text" style="cursor: pointer;" (click)="authService.GoogleAuth()"> <a (click)="authService.GoogleAuth()"class="text-reset">login with Google Account</a></p>
+              <!-- <a href="#!" class="forgot-password-link">Forgot password?</a> -->
           </div>
         </div>
       </div>

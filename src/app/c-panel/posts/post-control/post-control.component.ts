@@ -10,14 +10,19 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   templateUrl: './post-control.component.html',
   styleUrls: ['./post-control.component.scss']
 })
+
 export class PostControlComponent implements OnInit {
   idParam: any;
   isAdded = false;
   postData: any;
   addForm: any;
   submitted = false;
-  constructor(private _activeRoute: ActivatedRoute, private _apiServices: ApiService, private _FB: FormBuilder, public authService: AuthService, private location: Location
-) {
+  constructor(private _activeRoute: ActivatedRoute,
+    private _apiServices: ApiService,
+    private _FB: FormBuilder,
+    public authService: AuthService,
+    private location: Location
+  ) {
     this._activeRoute.params.subscribe((params: any) => {
       this.idParam = params['id'];
       if (!!this.idParam) {
@@ -45,8 +50,6 @@ export class PostControlComponent implements OnInit {
 
   addPost() {
     this.submitted = true;
-    console.log(this.addForm);
-
     if (this.addForm.status == "INVALID") {
       alert('Post Added succesfully!!!\n Check the values in browser console.');
       console.table(this.addForm.value);
@@ -63,8 +66,8 @@ export class PostControlComponent implements OnInit {
       alert('Post Updated succesfully!!!\n Check the values in browser console.');
       console.table(this.addForm.value);
       let paramJson = {
-        title: this.addForm.value.title? this.addForm.value.title: this.postData.title,
-        body: this.addForm.body? this.addForm.body: this.postData.body,
+        title: this.addForm.value.title ? this.addForm.value.title : this.postData.title,
+        body: this.addForm.body ? this.addForm.body : this.postData.body,
       }
       this._apiServices.editPostByID(this.idParam, paramJson).subscribe((data: any) => {
       })

@@ -36,10 +36,7 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log('done');
-
         this.ngZone.run(() => {
-          console.log('navgate');
           this.router.navigate(['cpanel/posts']);
         });
         this.SetUserData(result.user);
@@ -67,7 +64,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['success-register']);
       });
   }
   // Reset Forggot password
@@ -91,7 +88,7 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['posts']);
+        this.router.navigate(['cpanel/posts']);
       }
     });
   }
