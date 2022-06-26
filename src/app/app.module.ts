@@ -15,15 +15,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from './shared/services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SingUpComponent } from './user-auth/sing-up/sing-up.component';
-import { SingInComponent } from './user-auth/sing-in/sing-in.component';
-import { SuccessRegisterComponent } from './user-auth/success-register/success-register.component';
 
 @NgModule({
-  declarations: [AppComponent,
-  SingUpComponent,
-  SingInComponent,
-  SuccessRegisterComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

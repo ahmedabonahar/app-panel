@@ -3,8 +3,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-sing-up',
-  templateUrl: './sing-up.component.html',
-  styleUrls: ['./sing-up.component.scss']
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
 export class SingUpComponent implements OnInit {
 

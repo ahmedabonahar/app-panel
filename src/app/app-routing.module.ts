@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/guard/auth.guard';
-import { SingInComponent } from './user-auth/sing-in/sing-in.component';
-import { SingUpComponent } from './user-auth/sing-up/sing-up.component';
-import { SuccessRegisterComponent } from './user-auth/success-register/success-register.component';
+
 const routes: Routes = [
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: SingInComponent },
-  { path: 'sing-up', component: SingUpComponent },
-  { path: 'success-register', component: SuccessRegisterComponent },
+  { path: 'login', loadChildren: ()=> import("./user-auth/sing-in/sign-in.module").then(m => m.SignInModule) },
+  { path: 'sing-up',  loadChildren: ()=> import("./user-auth/sing-up/sign-up.module").then(m => m.SignUpModule) },
+  { path: 'success-register', loadChildren: ()=> import("./user-auth/success-register/success-register.module").then(m => m.SuccessRegisterModule)  },
   {
     path:'cpanel/posts',
     canActivate: [AuthGuard],
     loadChildren: ()=> import("./c-panel/c-panel.module").then(m => m.CPanelModule)
-}
+  }
 ];
 
 @NgModule({
